@@ -22,10 +22,10 @@ export const AppContext = createContext()
 function App() {
 
   //LOGIN CONTEXT
-  const [user, setUser] = useState('weslei')
+  const [user, setUser] = useState('UID')
    
   //BUSCAR DADOS API
-  const getUsers = async () => {
+  const getUser = async () => {
       try {
         const users = await fetchUsers();
         console.log(users)
@@ -39,7 +39,7 @@ function App() {
         <ContainerContent className="App">
             <MainContent>
 
-                <AppContext.Provider value={user}>
+                <AppContext.Provider value={[user,setUser]}>
                     <GlobalStyle/>
                     <Outlet/>
                 </AppContext.Provider>
