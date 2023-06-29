@@ -4,20 +4,27 @@ import './App.css'
 import {fetchUsers} from './helpers/axios'
 
 //STYLED COMPONENTS
-import { Teste } from './styled'
+import { ContainerContent, MainContent, GlobalStyle } from './styled'
 
 //FIREBASE
 import auth from './firebase/config'
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged  } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 //ROUTER
 import {Link, Outlet} from "react-router-dom"
 
+//CONTEXT
+import { createContext, useState } from "react";
+export const AppContext = createContext()
 
 
 
 function App() {
 
+  //LOGIN CONTEXT
+  const [user, setUser] = useState('weslei')
+   
+  //BUSCAR DADOS API
   const getUsers = async () => {
       try {
         const users = await fetchUsers();
@@ -27,18 +34,18 @@ function App() {
       }
   };
 
+
   return (
-        <div className="App">
+        <ContainerContent className="App">
+            <MainContent>
 
-              <button onClick={getUsers}>BUSCAR</button>
+                <AppContext.Provider value={user}>
+                    <GlobalStyle/>
+                    <Outlet/>
+                </AppContext.Provider>
 
-              <Link to='/'>HME</Link>
-              <Link to='/sobre'>SOBRE</Link>
-
-              <Teste>OI <span>WESLEI</span></Teste>
-
-              <Outlet/>
-        </div>
+            </MainContent>  
+        </ContainerContent>
   )
 }
 
