@@ -2,7 +2,7 @@
 import { EntrarGoogleContainer, LogoGoogle } from '../../assets/styledComponents/authStyles'
 
 //FIREBASE
-import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged  } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup  } from "firebase/auth";
 import auth from '../../firebase/config'
 
 //ROUTER

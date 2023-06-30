@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../assets/styledComponents/styled'
+import { ContainerCriar } from '../assets/styledComponents/authStyles'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao } from '../helpers/autenticado';
@@ -11,7 +11,10 @@ import { verificarAutenticacao } from '../helpers/autenticado';
 //ROUTER
 import {useNavigate} from "react-router-dom"
 
-
+//COMPONENTS
+import { TitleIcon } from '../components/login/TitleIcon'
+import { FormCriar } from '../components/criar/FormCriar'
+import { FazerLogin } from '../components/criar/FazerLogin'
 
 
 const Criar = () => {
@@ -42,7 +45,13 @@ const Criar = () => {
 
 
   return (
-    <div>Criar {user}</div>
+    <ContainerCriar>
+      
+         <TitleIcon/>
+         <FormCriar/>
+         <FazerLogin/>
+
+    </ContainerCriar>
   )
 }
 

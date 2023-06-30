@@ -1,4 +1,4 @@
-import {styled, createGlobalStyle }from 'styled-components'
+import {styled }from 'styled-components'
 
 
 
@@ -170,3 +170,209 @@ export const EsqueciSenha = styled.div`
 //------------------LOGIN-----------------
 
 
+
+
+
+
+
+
+//------------------CRIAR-----------------
+export const ContainerCriar = styled.div`
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+`
+
+
+export const FormCriarContainer = styled.div`
+      padding: 20px 10px;
+     border: 1px solid white;
+     border-radius: 5px;
+     width: 75%;
+
+     form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+     }
+
+     input{
+        margin-bottom: 25px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid #DFBD43;
+        padding: 5px 8px;
+        color: white;
+        width: 90%;
+     }
+
+     button{
+        color: white;
+        background-color: #DFBD43;
+        padding: 6px 35px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 500ms;
+
+        &:hover {
+          background-color: #dfbd43c6;
+        }
+     }
+
+
+     p{
+        margin-top: 10px;
+        color: red;
+     }
+
+
+
+     @media(max-width:992px){
+          width:90%;
+
+          input{
+            margin-bottom: 30px;
+            padding: 8px 10px;
+          }
+
+          button{
+            padding: 10px 50px;
+         }
+     }
+`
+
+
+
+
+export const IrParaLoginContainer = styled.div`
+   color: white;
+   margin-top: 15px;
+
+   span{
+      margin-right: 10px;
+   }
+
+   a{
+      background-color: #DFBD43;
+      border: none;
+      color:white;
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: 5px;
+      transition: 500ms;
+
+      &:hover{
+         background-color: #dfbd43c6;
+      }
+   }
+
+
+   @media(max-width:992px){
+      margin-top: 25px;
+   }
+`
+//------------------CRIAR-----------------
+
+
+
+
+
+
+
+
+//------------------RECUPERAR-----------------
+export const ContainerRecuperar = styled.div`
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+`
+
+
+
+export const FormRecuperarContainer  = styled.div`
+      padding: 20px 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      width: 75%;
+
+      h3{
+         color: white;
+         text-align: center;
+         margin-bottom: 20px;
+      }
+
+      form{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+      }
+
+      input{
+         margin-bottom: 35px;
+         background-color: transparent;
+         border: none;
+         border-bottom: 2px solid #DFBD43;
+         padding: 5px 8px;
+         color: white;
+         width: 90%;
+      }
+
+      button{
+         color: white;
+         background-color: #DFBD43;
+         padding: 6px 35px;
+         border-radius: 5px;
+         border: none;
+         cursor: pointer;
+         transition: 500ms;
+
+         &:hover {
+            background-color: #dfbd43c6;
+         }
+      }
+
+
+      p{
+         margin-top: 10px;
+         color: red;
+      }
+
+
+
+      @media(max-width:992px){
+         width:90%;
+
+         input{
+            margin-bottom: 30px;
+            padding: 8px 10px;
+         }
+
+         button{
+            padding: 10px 50px;
+         }
+      }
+` 
+
+
+export const ContainerIrParaLogin  = styled.div`
+     margin-top: 50px;
+     text-align: center;
+
+     a{
+        color: white;
+        text-decoration: none;
+        transition: 500ms;
+
+        &:hover{
+           color: gray;
+        }
+     }
+`
+//------------------RECUPERAR-----------------

@@ -1,6 +1,6 @@
 //FIREBASE
 import auth from '../firebase/config'
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 //VERIFICA SE USER ESTÁ LOGADO
@@ -26,4 +26,40 @@ export const sair = ()=>{
   .catch((error) => {
     console.log('Ocorreu um erro ao fazer logout:', error);
   });
+}
+
+
+
+
+//CRIAR
+export const CriarLoginEmailSenha = (email, password) => {
+
+      return new Promise((resolve, reject) => {
+          createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+              resolve(userCredential)
+          })
+          .catch((error) => {
+              reject(error)
+          }); 
+      });
+
+}
+
+
+
+
+//ENTRAR
+export const fazerLoginEmailSenha = (email, password) => {
+
+  return new Promise((resolve, reject) => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          resolve(userCredential)
+      })
+      .catch((error) => {
+          reject(error)
+      }); 
+  });
+
 }

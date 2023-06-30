@@ -1,17 +1,10 @@
 import './App.css'
 
-//AXIOS
-import {fetchUsers} from './helpers/axios'
-
 //STYLED COMPONENTS
 import { ContainerContent, MainContent, GlobalStyle } from './assets/styledComponents/styled'
 
-//FIREBASE
-import auth from './firebase/config'
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
 //ROUTER
-import {Link, Outlet} from "react-router-dom"
+import {Outlet} from "react-router-dom"
 
 //CONTEXT
 import { createContext, useState } from "react";
@@ -23,16 +16,6 @@ function App() {
 
   //LOGIN CONTEXT
   const [user, setUser] = useState('UID')
-   
-  //BUSCAR DADOS API
-  const getUser = async () => {
-      try {
-        const users = await fetchUsers();
-        console.log(users)
-      } catch (error) {
-        console.log(error)
-      }
-  };
 
 
   return (

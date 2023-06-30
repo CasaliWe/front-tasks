@@ -5,11 +5,17 @@ import { FormLoginContainer } from '../../assets/styledComponents/authStyles'
 import { useState } from 'react'
 
 //FIREBASE
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import auth from '../../firebase/config'
+import { fazerLoginEmailSenha } from '../../helpers/autenticado'
+
+//ROUTER
+import { useNavigate } from 'react-router-dom'
 
 
 export const FormLogin = () => {
+
+  //REDIRECIONAR
+  const navigate = useNavigate();
 
   const [avisoErroLogin, setAvisoErroLogin] = useState(false)
 
@@ -20,15 +26,14 @@ export const FormLogin = () => {
       e.preventDefault()
 
       
-      signInWithEmailAndPassword(auth, userLogin, passLogin)
-      .then((userCredential) => {
-          console.log(userCredential)
+      fazerLoginEmailSenha(userLogin,passLogin)
+      .then((res)=>{
+           console.log(res.user)
+           navigate('/home')
       })
-      .catch((error) => {
-          setUserLogin('')
-          setPassLogin('')
-          setAvisoErroLogin(true)
-      });
+      .catch((err)=>{
+           setAvisoErroLogin(true)
+      })
   }
 
 

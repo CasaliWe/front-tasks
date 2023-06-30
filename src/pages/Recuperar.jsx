@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../assets/styledComponents/styled'
+import { ContainerRecuperar } from '../assets/styledComponents/authStyles'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao } from '../helpers/autenticado';
@@ -11,7 +11,10 @@ import { verificarAutenticacao } from '../helpers/autenticado';
 //ROUTER
 import {useNavigate} from "react-router-dom"
 
-
+//COMPONENTS
+import { TitleIcon } from '../components/login/TitleIcon';
+import { EnviarEmail } from '../components/recuperar/EnviarEmail';
+import { IrParaLogin } from '../components/recuperar/IrParaLogin';
 
 
 
@@ -44,7 +47,13 @@ const Recuperar = () => {
 
 
   return (
-    <div>Recuperar {user}</div>
+    <ContainerRecuperar>
+
+        <TitleIcon/>
+        <EnviarEmail/>
+        <IrParaLogin/>
+      
+    </ContainerRecuperar>
   )
 }
 
