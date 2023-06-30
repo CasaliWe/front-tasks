@@ -14,7 +14,8 @@ import {useNavigate, useParams} from "react-router-dom"
 
 
 
-const Dias = () => {
+
+const TaskDia = () => {
   //CONTEXT USER
   const fullContext = useContext(AppContext)
   const [user, setUser] = fullContext
@@ -23,7 +24,7 @@ const Dias = () => {
   const navigate = useNavigate();
 
   //PEGAR PARÂMETROS
-  const {idSemana} = useParams()
+  const {idSemana, idDia} = useParams()
 
 
   useEffect(()=>{
@@ -39,10 +40,10 @@ const Dias = () => {
   }, [])
 
 
-
+    
   return (
-    <div>Dias {idSemana}</div>
+    <div>TaskDia {idSemana} + {idDia}</div>
   )
 }
 
-export default Dias
+export default TaskDia

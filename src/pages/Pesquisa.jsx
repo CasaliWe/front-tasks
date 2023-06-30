@@ -9,7 +9,7 @@ import {  } from '../styled'
 import { verificarAutenticacao } from '../helpers/autenticado';
 
 //ROUTER
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 
 
 
@@ -20,6 +20,9 @@ const Pesquisa = () => {
   
   //REDIRECIONAR
   const navigate = useNavigate();
+
+  //PEGAR PARÂMETRO
+  const {search} = useParams()
 
 
 
@@ -38,7 +41,7 @@ const Pesquisa = () => {
 
 
   return (
-    <div>Pesquisa {user}</div>
+    <div>Pesquisa {search}</div>
   )
 }
 

@@ -15,7 +15,7 @@ import Login  from './pages/Login'
 import Criar  from './pages/Criar'
 import Recuperar  from './pages/Recuperar'
 import NotFound  from './pages/NotFound'
-
+import TaskDia from './pages/TaskDia'
 
 
 
@@ -28,8 +28,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route path='/criar' element={<Criar/>}/>
                     <Route path='/recuperar' element={<Recuperar/>}/>
                     <Route path='/home' element={<Home/>}/>
-                    <Route path='/dias' element={<Dias/>}/>
-                    <Route path='/pesquisa' element={<Pesquisa/>}/>
+                    <Route path='/dias/:idSemana' element={<Dias/>}/>
+                    <Route path='/dias/task/:idSemana/:idDia' element={<TaskDia/>}/>
+                    <Route path='/pesquisa/:search' element={<Pesquisa/>}/>
                     <Route path='*' element={<NotFound/>}/>
                 </Route>
             </Routes>

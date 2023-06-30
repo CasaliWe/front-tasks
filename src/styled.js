@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 export const ContainerContent = styled.div`
       width: 100%;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.932);
+      background-color: black;
       display: flex;
       justify-content: center;
 `
