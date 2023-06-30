@@ -16,7 +16,7 @@ import { TitleIcon } from '../components/login/TitleIcon';
 import { FormLogin } from '../components/login/FormLogin';
 import { SemConta } from '../components/login/SemConta';
 import { EntrarGoogle } from '../components/login/EntrarGoogle';
-
+import { EsqueceuSenha } from '../components/login/EsqueceuSenha';
 
 const Login = () => {
   //CONTEXT USER
@@ -52,6 +52,7 @@ const Login = () => {
         <FormLogin/>
         <SemConta/>
         <EntrarGoogle/>
+        <EsqueceuSenha/>
     </ContainerLogin>
   )
 }

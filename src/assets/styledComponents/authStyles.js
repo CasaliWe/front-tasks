@@ -151,6 +151,22 @@ export const EntrarGoogleContainer = styled.div`
 export const LogoGoogle = styled.img`
       width: 22px;
 `
+
+
+export const EsqueciSenha = styled.div`
+     margin-top: 40px;
+
+     a{
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        transition: 500ms;
+
+        &:hover{
+            color: gray;
+        }
+     }
+`
 //------------------LOGIN-----------------
 
 

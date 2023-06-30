@@ -6,7 +6,7 @@ import {AppContext} from "../App"
 import {  } from '../assets/styledComponents/styled'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
-import { verificarAutenticacao } from '../helpers/autenticado';
+import { verificarAutenticacao, sair } from '../helpers/autenticado';
 
 //ROUTER
 import {useNavigate} from "react-router-dom"
@@ -47,7 +47,7 @@ const Home = () => {
 
 
   return (
-    <div>Home {user}</div>
+    <div><button onClick={sair}>sair</button></div>
   )
 }
 
