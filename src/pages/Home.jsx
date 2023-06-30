@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../styled'
+import {  } from '../assets/styledComponents/styled'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao } from '../helpers/autenticado';
@@ -26,13 +26,21 @@ const Home = () => {
 
   useEffect(()=>{
 
-      //VERIFICANDO SE O USER ESTÁ LOGADO 
-      const verificarUser = verificarAutenticacao()
-      if(verificarUser){
-          //SALVAR O USER NA VAR E BUSCAR OS DADOS DELE
-      }else{
-          navigate(`/`)
-      }
+      const verificarUser = async () => {
+          try {
+            const user = await verificarAutenticacao();
+            if (user) {
+              setUser(user.uid)
+              //PEGAR OS DADOS COM O UID
+            }else{
+              navigate(`/`)
+            }
+          } catch (error) {
+              navigate(`/`)
+          }
+        };
+      
+        verificarUser();
       
   }, [])
 

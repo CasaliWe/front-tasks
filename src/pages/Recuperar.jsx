@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../styled'
+import {  } from '../assets/styledComponents/styled'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao } from '../helpers/autenticado';
@@ -26,12 +26,18 @@ const Recuperar = () => {
 
   useEffect(()=>{
 
-    //VERIFICANDO SE O USER ESTÁ LOGADO 
-    const verificarUser = verificarAutenticacao()
-    if(verificarUser){
-        //SALVAR O USER NA VAR E LEVA PARA HOME
-        navigate(`/home`)
-    }
+      const verificarUser = async () => {
+          try {
+            const user = await verificarAutenticacao();
+            if (user) {
+              navigate(`/home`)
+            }
+          } catch (error) {
+              navigate(`/`)
+          }
+      };
+
+      verificarUser();
 
   }, [])
 

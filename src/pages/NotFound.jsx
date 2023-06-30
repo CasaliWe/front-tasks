@@ -1,5 +1,5 @@
 //STYLED COMPONENTS
-import {  } from '../styled'
+import {  } from '../assets/styledComponents/styled'
 
 
 const NotFound = () => {

@@ -4,7 +4,7 @@ import './App.css'
 import {fetchUsers} from './helpers/axios'
 
 //STYLED COMPONENTS
-import { ContainerContent, MainContent, GlobalStyle } from './styled'
+import { ContainerContent, MainContent, GlobalStyle } from './assets/styledComponents/styled'
 
 //FIREBASE
 import auth from './firebase/config'
