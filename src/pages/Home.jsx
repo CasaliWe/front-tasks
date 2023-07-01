@@ -1,5 +1,5 @@
 //CONTEXT USER
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
@@ -10,6 +10,9 @@ import { verificarAutenticacao, sair } from '../helpers/autenticado';
 
 //ROUTER
 import {useNavigate} from "react-router-dom"
+
+//VERIFICAR MODO DE LOGIN 
+import { modoDeLogin } from '../helpers/modoDeLogin';
 
 
 
@@ -22,10 +25,36 @@ const Home = () => {
   //REDIRECIONAR
   const navigate = useNavigate();
 
+  //IMAGEM DE PERFIL E NOME USUÁRIO
+  const [nomeUser,setNomeUser] = useState('')
+  const [imgUser,setImgUser] = useState('')
+
 
 
   useEffect(()=>{
+       
+      //VERIFICAR SE LOGIN FOI GOOGLE OU EMAIL E SENHA, DEFINIR A IMG E NOME;
+      const verificarModoLogin = async ()=>{
+          try {
 
+            modoDeLogin()
+            .then((res)=>{
+                setNomeUser(res.Nome)
+                setImgUser(res.ImgName)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+            
+          } catch (error) {
+              console.log(error)
+          }
+      }
+      verificarModoLogin();
+
+
+
+      //VERIFICAR SE ESTÁ LOGADO
       const verificarUser = async () => {
           try {
             const user = await verificarAutenticacao();
@@ -39,7 +68,6 @@ const Home = () => {
               navigate(`/`)
           }
         };
-      
         verificarUser();
       
   }, [])
@@ -47,7 +75,14 @@ const Home = () => {
 
 
   return (
-    <div><button onClick={sair}>sair</button></div>
+    <div>
+
+      <button onClick={sair}>sair</button>
+
+      <p>{nomeUser}</p>
+      <img src={imgUser}/>
+
+    </div>
   )
 }
 
