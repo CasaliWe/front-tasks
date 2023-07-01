@@ -1,6 +1,6 @@
 //FIREBASE
 import auth from '../firebase/config'
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 
 //VERIFICA SE USER ESTÁ LOGADO
@@ -61,5 +61,24 @@ export const fazerLoginEmailSenha = (email, password) => {
           reject(error)
       }); 
   });
+
+}
+
+
+
+
+
+//RECUPERAR SENHA
+export const recuperarSenha = (email) => {
+
+    return new Promise((resolve, reject) => {
+      sendPasswordResetEmail(auth, email)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
 
 }

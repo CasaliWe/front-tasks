@@ -7,6 +7,9 @@ import { useState } from 'react'
 //FIREBASE
 import { CriarLoginEmailSenha } from '../../helpers/autenticado'
 
+//AXIOS
+import { pegarDados, enviarDadosArquivo } from '../../helpers/axios'
+
 //ROUTER
 import {useNavigate} from "react-router-dom"
 
@@ -30,15 +33,25 @@ export const FormCriar = () => {
   const handleSubmit = (e)=>{
       e.preventDefault()
        
-
       if(passCriar == confirmCriar){
              
           CriarLoginEmailSenha(emailCriar, passCriar)
           .then((res)=>{
                  if(res.user){
-                    //SALVAR IMG BANCO************************************************
-                    //SALVAR NOME BANCO***********************************************
-                    navigate('/home')
+                  
+                    const formData = new FormData();
+                    formData.append('nome', nomeCriar);
+                    formData.append('arquivo', imageCriar);
+                    formData.append('uid', res.user.uid);
+            
+                    enviarDadosArquivo('/salvarDadosStart', formData)
+                    .then((res)=>{
+                        navigate('/home')
+                    })
+                    .catch((err)=>{
+                        console.log(err)
+                    })
+    
                  }
           })
           .catch((err)=>{

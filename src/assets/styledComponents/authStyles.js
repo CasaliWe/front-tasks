@@ -344,6 +344,15 @@ export const FormRecuperarContainer  = styled.div`
          color: red;
       }
 
+      h6{
+         color: green;
+         font-weight: normal;
+         font-size: 14px;
+         width: 60%;
+         margin: 10px auto;
+         text-align: center;
+      }
+
 
 
       @media(max-width:992px){

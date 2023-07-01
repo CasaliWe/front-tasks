@@ -5,7 +5,7 @@ import { FormRecuperarContainer } from '../../assets/styledComponents/authStyles
 import { useState } from 'react'
 
 //FIREBASE
-import {  } from '../../helpers/autenticado'
+import { recuperarSenha } from '../../helpers/autenticado'
 
 //ROUTER
 import { useNavigate } from 'react-router-dom'
@@ -19,16 +19,21 @@ export const EnviarEmail = () => {
   //REDIRECIONAR
   const navigate = useNavigate();
 
-  const [avisoEmail, setAvisoEmail] = useState(null)
+  const [avisoEmailErr, setAvisoEmailErr] = useState(null)
+  const [avisoEmailEnviado, setAvisoEmailEnviado] = useState(null)
   const [emailVerificar, setEmailVerificar] = useState('')
   
 
   const handleSubmit = (e)=>{
         e.preventDefault()
         
-
-        //LÓGICA PARA ENVIAR O EMAIL DE RECUPERAÇÃO USANDO FIREBASE NO ARQUIVO SEPARADO*********
-        console.log(emailVerificar)
+        recuperarSenha(emailVerificar)
+        .then((res)=>{
+            setAvisoEmailEnviado('Verifique seu email para recuperar sua senha!')
+        })
+        .catch((err)=>{
+            setAvisoEmailErr('Email não cadastrado!')
+        })
   }
   
 
@@ -42,7 +47,8 @@ export const EnviarEmail = () => {
 
             <button type='submit'>RECUPERAR</button>
 
-            {avisoEmail ? <p>{avisoEmail}</p> : ''}
+            {avisoEmailErr ? <p>{avisoEmailErr}</p> : ''}
+            {avisoEmailEnviado ? <h6>{avisoEmailEnviado}</h6> : ''}
         </form>
     </FormRecuperarContainer>
   )
