@@ -11,6 +11,9 @@ import { verificarAutenticacao } from '../helpers/autenticado';
 //ROUTER
 import {useNavigate, useParams} from "react-router-dom"
 
+//AXIOS
+import {enviarDados} from '../helpers/axios'
+
 
 
 
@@ -32,8 +35,22 @@ const Dias = () => {
         try {
           const user = await verificarAutenticacao();
           if (user) {
+
             setUser(user.uid)
-            //PEGAR OS DADOS COM O UID
+
+            //PEGAR OS DIAS COM O UID
+            const formData = new FormData()
+            formData.append('uid', user.uid)
+            formData.append('id', idSemana)
+            enviarDados('/pegarDias', formData)
+            .then((res)=>{
+               //FAZER LÓGICA AQUI JA CHEGA OS DADOS FORMATADOS***************
+               console.log(res)
+            })
+            .catch((err)=>{
+               console.log(err)
+            })
+
           }else{
             navigate(`/`)
           }
@@ -49,7 +66,7 @@ const Dias = () => {
 
 
   return (
-    <div>Dias {idSemana}</div>
+    <div>Dias {idSemana} + {user}</div>
   )
 }
 

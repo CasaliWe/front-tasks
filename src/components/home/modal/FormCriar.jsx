@@ -2,12 +2,26 @@
 import { FormModal, ContainerFormModal,ResFormModal1, ResFormModal2 } from "../../../assets/styledComponents/home";
 
 //HOOKS
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {AppContext} from "../../../App"
+
+//AXIOS
+import { enviarDados } from "../../../helpers/axios";
+
+//ROUTER
+import {useNavigate} from "react-router-dom"
 
 
 
 
 export const FormCriar = () => {
+
+    //REDIRECIONAR
+    const navigate = useNavigate();
+
+    //CONTEXT USER
+    const fullContext = useContext(AppContext)
+    const [user, setUser] = fullContext
     
     //ARMAZENA NOME E DATA DO FORM
     const [date, setDate] = useState('')
@@ -18,23 +32,65 @@ export const FormCriar = () => {
     const [diasNaoDisponiveis, setNaoDiasDisponiveis] = useState(false)
 
     //DATAS FORMATADAS NA ORDEM CORRETA
-    const [data1, setData1] = useState('16/03/23')
-    const [data2, setData2] = useState('18/03/23')
+    const [data1, setData1] = useState('')
+    const [data2, setData2] = useState('')
+
+    //SE TIVER DATAS JÁ CADASTRADAS NO BANCO INSERE O VALOR, APÓS A VERIFICAÇÃO
+    const [jaExiste, setJaExiste] = useState([])
 
 
 
-    //Após colocar nome e data inicial, faz verificação de datas;
+    //Após colocar nome e data inicial, faz verificação de datas NO onSubmit;
     const handleSubmit = (e)=>{
         e.preventDefault()
+          
+        //nova data com a data que vem do input
+        const dataFormatada = new Date(date)
+        const formData = new FormData();
+        formData.append('date', dataFormatada);
+        formData.append('uid', user);
         
-        //VERIFICAR DATA**************
+        //Enviando para o backend
+        enviarDados('/verificarDatasNovaSemana', formData)
+        .then((res)=>{
+            if(res.inicioFinal){
+               //PODE CRIAR AS DATAS
+               setData1(res.inicioFinal.inicio)
+               setData2(res.inicioFinal.final)
+               setNaoDiasDisponiveis(false)
+               setDiasDisponiveis(true)
+            }else{
+               //TEM DATAS JÁ CADASTRADAS
+               setJaExiste(res.datasJaExistentes)
+               setDiasDisponiveis(false)
+               setNaoDiasDisponiveis(true)
+            }
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 
 
     //Após verificar datas, cria a semana;
     const  criarSemanaPosVerificar = ()=>{
+
+        //nova data com a data e nome semana que vem do input
+        const dataFormatada = new Date(date)
+        const formData = new FormData();
+        formData.append('date', dataFormatada);
+        formData.append('nome', nomeSemana);
+        formData.append('uid', user);
         
-        //CRIAR SEMANA****************
+        //CRIAR SEMANA
+        enviarDados('/criarNovaSemana', formData)
+        .then((res)=>{
+            console.log(res)
+            navigate(`/`)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
         
     }
 
@@ -66,9 +122,9 @@ export const FormCriar = () => {
       {diasNaoDisponiveis? (
            <ResFormModal2>
                 <p>Já existe uma semana criada com as datas:</p>
-                <h6>16/04/23</h6>
-                <h6>17/04/23</h6>
-                <h6>18/04/23</h6>
+                {jaExiste.map((data, i)=>(
+                    <h6 key={i}>{data}</h6>
+                ))}
            </ResFormModal2>
       ) : ''}
 

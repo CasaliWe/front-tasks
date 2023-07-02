@@ -5,4 +5,8 @@
 * Mostrar as datas já cadastradas;
 * Após verificar datas, criar semana;
 * Fazer navegação para página dias SEMANAUNICA;
-* Deletar semana;
+* Trocar nome domínio firebase;
+* Arruma turno dia;
+* Arrumar foto;
+* Arrumar btn para voltar quando mostra datas ja existentes;
+* Arrumar footer home em diante;

@@ -27,19 +27,6 @@ export const MainContent = styled.div`
       padding: 35px 25px;
       overflow-y: hidden;
 
-      &::-webkit-scrollbar {
-        width: 4px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #DFBD49;
-        border-radius: 2px;
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-        background-color: #DFBD43;
-      }
-
       @media(max-width:992px){
         width:100%;
         padding: 25px 15px;

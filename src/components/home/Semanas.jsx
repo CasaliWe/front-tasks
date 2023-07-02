@@ -12,19 +12,17 @@ import { useState } from "react";
 
 
 
-export const Semanas = () => {
+export const Semanas = ({semanasDiasAll}) => {
 
-  const [msgVazio, setMsgVazio] = useState(false)
-  
 
   return (
     <SemanasStyled>
 
-        {msgVazio? <p>Adicione sua semana clicando em ADICIONAR +</p> : ''}
-
-        <SemanaUnica/>
-        <SemanaUnica/>
-        <SemanaUnica/>
+        {semanasDiasAll.length == 0 ? <p>Adicione sua semana clicando em ADICIONAR +</p> : ''}
+            
+        {semanasDiasAll ? semanasDiasAll.map((semana, i)=>(
+            <SemanaUnica key={i} semana={semana}/>
+        )) : ''}
 
     </SemanasStyled>
   )

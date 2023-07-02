@@ -14,6 +14,9 @@ import {useNavigate} from "react-router-dom"
 //VERIFICAR MODO DE LOGIN 
 import { modoDeLogin } from '../helpers/modoDeLogin';
 
+//AXIOS
+import {enviarDados} from '../helpers/axios'
+
 //COMPONENTS
 import { Header } from '../components/home/Header';
 import { Pesquisa } from '../components/home/Pesquisa';
@@ -35,44 +38,59 @@ const Home = () => {
   const [nomeUser,setNomeUser] = useState('')
   const [imgUser,setImgUser] = useState('')
 
+  //SEMANAS E DIAS APÓS BUSCA NO BANCO DE DADOS
+  const [semanasDiasAll, setSemanasDiasAll] = useState('')
+
 
 
   useEffect(()=>{
        
-      //VERIFICAR SE LOGIN FOI GOOGLE OU EMAIL E SENHA, DEFINIR A IMG E NOME;
-      const verificarModoLogin = async ()=>{
-          try {
+        //VERIFICAR SE LOGIN FOI GOOGLE OU EMAIL E SENHA, DEFINIR A IMG E NOME;
+        const verificarModoLogin = async ()=>{
+            try {
 
-            modoDeLogin()
-            .then((res)=>{
-                setNomeUser(res.Nome)
-                setImgUser(res.ImgName)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-            
-          } catch (error) {
-              console.log(error)
-          }
-      }
-      verificarModoLogin();
-
-
-
-      //VERIFICAR SE ESTÁ LOGADO
-      const verificarUser = async () => {
-          try {
-            const user = await verificarAutenticacao();
-            if (user) {
-              setUser(user.uid)
-              //PEGAR OS DADOS COM O UID
-            }else{
-              navigate(`/`)
+              modoDeLogin()
+              .then((res)=>{
+                  setNomeUser(res.Nome)
+                  setImgUser(res.ImgName)
+              })
+              .catch((err)=>{
+                  console.log(err)
+              })
+              
+            } catch (error) {
+                console.log(error)
             }
-          } catch (error) {
-              navigate(`/`)
-          }
+        }
+        verificarModoLogin();
+
+
+
+        //VERIFICAR SE ESTÁ LOGADO
+        const verificarUser = async () => {
+            try {
+              const user = await verificarAutenticacao();
+              if (user) {
+
+                setUser(user.uid)
+                
+                //PEGAR OS DADOS COM O UID
+                const formData = new FormData()
+                formData.append('uid', user.uid)
+                enviarDados('/pegarSemanasHome', formData)
+                .then((res)=>{
+                    setSemanasDiasAll(res)
+                })
+                .catch((err)=>{
+                    console.log(err)
+                })
+
+              }else{
+                navigate(`/`)
+              }
+            } catch (error) {
+                navigate(`/`)
+            }
         };
         verificarUser();
       
@@ -86,7 +104,7 @@ const Home = () => {
           <Header nomeUser={nomeUser} imgUser={imgUser}/>
           <Pesquisa/>
           <Adicionar/>
-          <Semanas/>
+          <Semanas semanasDiasAll={semanasDiasAll}/>
 
     </ContainerHome>
   )

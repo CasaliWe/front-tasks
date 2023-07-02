@@ -139,14 +139,18 @@ export const ContainerModal = styled.div`
          left: 0;
          right: 0;
          width: 100%;
-         height: 100vh;
+         height: 120vh;
          display: flex;
          justify-content: center;
          flex-direction: column;
          align-items: center;
-         background-color: rgba(0, 0, 0, 0.947);
+         background-color:rgba(0, 0, 0, 0.947);
          color: white;
-         padding-top: 120px;
+         padding-top: 180px;
+
+         @media(min-width:1800px){
+            padding-top: 280px;
+         }
 `
 
 
@@ -294,8 +298,33 @@ export const SemanasStyled = styled.div`
         margin-top: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
+        height: 60%;
+        overflow-y: auto;
+        padding-bottom: 15px;
+        padding: 5px;
+
+        @media (min-width:1000px) and (max-width:1380px){
+             height: 300px;
+             padding-bottom: 40px;
+        }
+
+
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #DFBD49;
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #DFBD43;
+        }
+
 
         p{
             color: white;
@@ -331,6 +360,7 @@ export const ContainerSemanaUnica = styled.div`
         justify-content: space-between;
         align-items: center;
         height: 100%;
+        width: 85%;
 
         h6{
              margin-bottom: 5px;
