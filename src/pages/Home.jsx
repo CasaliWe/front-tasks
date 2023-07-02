@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../assets/styledComponents/styled'
+import { ContainerHome } from '../assets/styledComponents/home'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao, sair } from '../helpers/autenticado';
@@ -13,6 +13,12 @@ import {useNavigate} from "react-router-dom"
 
 //VERIFICAR MODO DE LOGIN 
 import { modoDeLogin } from '../helpers/modoDeLogin';
+
+//COMPONENTS
+import { Header } from '../components/home/Header';
+import { Pesquisa } from '../components/home/Pesquisa';
+import { Adicionar } from '../components/home/Adicionar';
+import { Semanas } from '../components/home/Semanas';
 
 
 
@@ -75,14 +81,14 @@ const Home = () => {
 
 
   return (
-    <div>
+    <ContainerHome>
 
-      <button onClick={sair}>sair</button>
+          <Header nomeUser={nomeUser} imgUser={imgUser}/>
+          <Pesquisa/>
+          <Adicionar/>
+          <Semanas/>
 
-      <p>{nomeUser}</p>
-      <img src={imgUser}/>
-
-    </div>
+    </ContainerHome>
   )
 }
 

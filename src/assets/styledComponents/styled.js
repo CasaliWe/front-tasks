@@ -25,7 +25,7 @@ export const MainContent = styled.div`
       width:35%;
       height:100%;
       padding: 35px 25px;
-      overflow-y: auto;
+      overflow-y: hidden;
 
       &::-webkit-scrollbar {
         width: 4px;
