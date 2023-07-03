@@ -19,7 +19,21 @@ export const TaskUnica = ({task}) => {
   
   //CONCLUIR TAREFA
   const concluir = ()=>{
-       
+
+      const formData = new FormData()
+      formData.append('uid', task.Uid)
+      formData.append('semanaId', task.SemanaId)
+      formData.append('diaId', task.DiaId)
+      formData.append('taskId', task.id)
+
+      enviarDados('/concluirTask', formData)
+      .then((res)=>{  
+            navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
+
   }
 
 
@@ -47,11 +61,11 @@ export const TaskUnica = ({task}) => {
   
   return (
     <ContainerTaskUnica>
-         <span><input type="checkbox" onChange={concluir}/></span>
+         <span><input type="checkbox" checked={task.Concluida ? true : false} onChange={concluir}/></span>
 
          <ContentTaskSpan>
             <h6>{task.HorarioTask < 10 ? '0' + task.HorarioTask + ':00 hrs' : task.HorarioTask + ':00 hrs'}</h6>
-            <div>{task.Conteudo}</div>
+            <div style={{ textDecoration: task.Concluida == true ? 'line-through' : '' }}>{task.Conteudo}</div>
          </ContentTaskSpan>
 
          <span onClick={deletarTask}> <Trash2 color="#DFBD49" size={25} strokeWidth={2}/> </span>
