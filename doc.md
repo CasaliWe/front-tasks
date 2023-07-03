@@ -10,3 +10,5 @@
 * Arrumar foto;
 * Arrumar btn para voltar quando mostra datas ja existentes;
 * Arrumar footer home em diante;
+* Terminar conclusão task;
+* Pesquisa;

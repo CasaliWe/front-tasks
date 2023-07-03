@@ -1,9 +1,9 @@
 //CONTEXT USER
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {AppContext} from "../App"
 
 //STYLED COMPONENTS
-import {  } from '../assets/styledComponents/styled'
+import { ContainerDias, StyledDias } from '../assets/styledComponents/dias'
 
 //VERIFICAÇÃO DE LOGIN FIREBASE
 import { verificarAutenticacao } from '../helpers/autenticado';
@@ -13,6 +13,15 @@ import {useNavigate, useParams} from "react-router-dom"
 
 //AXIOS
 import {enviarDados} from '../helpers/axios'
+
+//COMPONENTS
+import { Header } from '../components/dias/Header';
+import { DiaUnico } from '../components/dias/DiaUnico';
+import { AvisoDias } from '../components/dias/AvisoDias';
+import { Pesquisa } from '../components/home/Pesquisa';
+
+//VERIFICAR MODO DE LOGIN 
+import { modoDeLogin } from '../helpers/modoDeLogin';
 
 
 
@@ -28,9 +37,38 @@ const Dias = () => {
   //PEGAR PARÂMETROS
   const {idSemana} = useParams()
 
+  //IMAGEM DE PERFIL E NOME USUÁRIO
+  const [nomeUser,setNomeUser] = useState('')
+  const [imgUser,setImgUser] = useState('')
+
+  //APÓS BUSCA DOS DIAS DA SEMANA
+  const [diasSemanaAll, setDiasSemanaAll] = useState('')
+
 
   useEffect(()=>{
 
+    //VERIFICAR SE LOGIN FOI GOOGLE OU EMAIL E SENHA, DEFINIR A IMG E NOME;
+    const verificarModoLogin = async ()=>{
+        try {
+
+          modoDeLogin()
+          .then((res)=>{
+              setNomeUser(res.Nome)
+              setImgUser(res.ImgName)
+          })
+          .catch((err)=>{
+              console.log(err)
+          })
+          
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    verificarModoLogin();
+
+
+     
+    //VERIFICAR SE ESTÁ LOGADO
     const verificarUser = async () => {
         try {
           const user = await verificarAutenticacao();
@@ -44,8 +82,8 @@ const Dias = () => {
             formData.append('id', idSemana)
             enviarDados('/pegarDias', formData)
             .then((res)=>{
-               //FAZER LÓGICA AQUI JA CHEGA OS DADOS FORMATADOS***************
-               console.log(res)
+               //COLOCANDO O ARRAY DE DIAS DA SEMANA
+               setDiasSemanaAll(res)
             })
             .catch((err)=>{
                console.log(err)
@@ -66,7 +104,18 @@ const Dias = () => {
 
 
   return (
-    <div>Dias {idSemana} + {user}</div>
+    <ContainerDias>
+
+        <Header  nomeUser={nomeUser} imgUser={imgUser}/>
+        <StyledDias>
+              {diasSemanaAll ? diasSemanaAll.map((dia, i)=>(
+                  <DiaUnico key={i} dia={dia}/>
+              )) : ''}
+        </StyledDias>
+        <Pesquisa/>
+        <AvisoDias/>
+       
+    </ContainerDias>
   )
 }
 
