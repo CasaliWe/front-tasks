@@ -48,7 +48,7 @@ export const FormAddTask = ({setModal}) => {
           navigate(`/dias/task/${idSemana}/${idDia}`)
       })
       .catch((err)=>{
-          console.log(err)
+          if(err){navigate('/')}
       })
 
   }
@@ -59,30 +59,30 @@ export const FormAddTask = ({setModal}) => {
          <form onSubmit={criarTask}>
              <select required onChange={(e)=>{setHora(e.target.value)}}>
                  <option value="">Horário</option>
-                 <option value="1">1am</option>
-                 <option value="2">2am</option>
-                 <option value="3">3am</option>
-                 <option value="4">4am</option>
-                 <option value="5">5am</option>
-                 <option value="6">6am</option>
-                 <option value="7">7am</option>
-                 <option value="8">8am</option>
-                 <option value="9">9am</option>
-                 <option value="10">10am</option>
-                 <option value="11">11am</option>
-                 <option value="12">12pm - meio dia</option>
-                 <option value="13">1pm</option>
-                 <option value="14">2pm</option>
-                 <option value="15">3pm</option>
-                 <option value="16">4pm</option>
-                 <option value="17">5pm</option>
-                 <option value="18">6pm</option>
-                 <option value="19">7pm</option>
-                 <option value="20">8pm</option>
-                 <option value="21">9pm</option>
-                 <option value="22">10pm</option>
-                 <option value="23">11pm</option>
-                 <option value="0">12am - meia noite</option>
+                 <option value="1">1:00 hrs</option>
+                 <option value="2">2:00 hrs</option>
+                 <option value="3">3:00 hrs</option>
+                 <option value="4">4:00 hrs</option>
+                 <option value="5">5:00 hrs</option>
+                 <option value="6">6:00 hrs</option>
+                 <option value="7">7:00 hrs</option>
+                 <option value="8">8:00 hrs</option>
+                 <option value="9">9:00 hrs</option>
+                 <option value="10">10:00 hrs</option>
+                 <option value="11">11:00 hrs</option>
+                 <option value="12">12:00 hrs - meio dia</option>
+                 <option value="13">13:00 hrs</option>
+                 <option value="14">14:00 hrs</option>
+                 <option value="15">15:00 hrs</option>
+                 <option value="16">16:00 hrs</option>
+                 <option value="17">17:00 hrs</option>
+                 <option value="18">18:00 hrs</option>
+                 <option value="19">19:00 hrs</option>
+                 <option value="20">20:00 hrs</option>
+                 <option value="21">21:00 hrs</option>
+                 <option value="22">22:00 hrs</option>
+                 <option value="23">23:00 hrs</option>
+                 <option value="0">00:00 hrs - meia noite</option>
              </select>
              <input type="text" placeholder='Tarefa' required value={contentTask} onChange={(e)=>{setContentTask(e.target.value)}}/>
 

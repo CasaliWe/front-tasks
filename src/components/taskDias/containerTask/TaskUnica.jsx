@@ -28,10 +28,10 @@ export const TaskUnica = ({task}) => {
 
       enviarDados('/concluirTask', formData)
       .then((res)=>{  
-            navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
+          navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
       })
       .catch((err)=>{
-          console.log(err)
+          if(err){navigate('/')}
       })
 
   }
@@ -48,10 +48,10 @@ export const TaskUnica = ({task}) => {
 
     enviarDados('/excluirTask', formData)
     .then((res)=>{  
-          navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
+        navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
     })
     .catch((err)=>{
-        console.log(err)
+        if(err){navigate('/')}
     })
         
   }

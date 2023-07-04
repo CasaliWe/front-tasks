@@ -67,7 +67,7 @@ export const FormCriar = () => {
             }
         })
         .catch((err)=>{
-            console.log(err)
+            if(err){navigate('/')}
         })
     }
 
@@ -85,11 +85,10 @@ export const FormCriar = () => {
         //CRIAR SEMANA
         enviarDados('/criarNovaSemana', formData)
         .then((res)=>{
-            console.log(res)
             navigate(`/`)
         })
         .catch((err)=>{
-            console.log(err)
+            if(err){navigate('/')}
         })
         
     }

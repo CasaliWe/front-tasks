@@ -60,9 +60,17 @@ export const FooterApp = styled.footer`
         color: orange;
     }
 
-    @media(min-width: 1300px){
+
+
+    @media(min-width: 1800px){
         font-size: 18px;
-        padding: 20px;
+        padding: 22px;
+    }
+
+
+    @media(min-width: 1300px){
+        font-size: 13px;
+        padding: 12px;
     }
 `
 

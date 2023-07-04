@@ -15,7 +15,7 @@ export const AppContext = createContext()
 function App() {
 
   //LOGIN CONTEXT
-  const [user, setUser] = useState('UID')
+  const [user, setUser] = useState('')
 
 
   return (

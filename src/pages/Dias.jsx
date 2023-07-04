@@ -60,8 +60,8 @@ const Dias = () => {
               console.log(err)
           })
           
-        } catch (error) {
-            console.log(error)
+        } catch (err) {
+             if(err){navigate('/')}
         }
     }
     verificarModoLogin();
@@ -86,7 +86,7 @@ const Dias = () => {
                setDiasSemanaAll(res)
             })
             .catch((err)=>{
-               console.log(err)
+               if(err){navigate('/')}
             })
 
           }else{

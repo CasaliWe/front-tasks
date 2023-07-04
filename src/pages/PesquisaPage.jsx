@@ -90,14 +90,14 @@ const PesquisaPage = () => {
                  setTarefasPesquisa(res)
               })
               .catch((err)=>{
-                 console.log(err)
+                 if(err){navigate('/')}
               })
 
             }else{
               navigate(`/`)
             }
-          } catch (error) {
-              navigate(`/`)
+          } catch (err) {
+              if(err){navigate('/')}
           }
       };
 

@@ -42,7 +42,7 @@ export const SemanaUnica = ({semana}) => {
             navigate(`/`)
         })
         .catch((err)=>{
-            console.log(err)
+            if(err){navigate('/')}
         })
    }
 

@@ -31,10 +31,10 @@ export const TaskPesquisaUnica = ({task, search}) => {
   
         enviarDados('/concluirTask', formData)
         .then((res)=>{  
-              navigate(`/pesquisa/${search}`)
+            navigate(`/pesquisa/${search}`)
         })
         .catch((err)=>{
-            console.log(err)
+            if(err){navigate('/')}
         })
     }
 
@@ -53,7 +53,7 @@ export const TaskPesquisaUnica = ({task, search}) => {
             navigate(`/pesquisa/${search}`)
         })
         .catch((err)=>{
-            console.log(err)
+            if(err){navigate('/')}
         })
             
     }

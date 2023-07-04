@@ -49,7 +49,7 @@ export const FormCriar = () => {
                         navigate('/home')
                     })
                     .catch((err)=>{
-                        console.log(err)
+                        if(err){navigate('/')}
                     })
     
                  }
