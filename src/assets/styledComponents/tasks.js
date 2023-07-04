@@ -116,6 +116,10 @@ export const ContainerFormTask = styled.div`
             }
          }
      }
+
+     @media(min-width:1300px){
+            width: 50%;
+         }
 `
 
 

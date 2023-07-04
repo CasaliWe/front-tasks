@@ -87,6 +87,10 @@ export const FormLoginContainer = styled.div`
             padding: 10px 50px;
          }
      }
+
+     @media(min-width:1300px){
+          width:45%;
+     }
 `
 
 
@@ -243,6 +247,10 @@ export const FormCriarContainer = styled.div`
             padding: 10px 50px;
          }
      }
+
+     @media(min-width:1300px){
+          width:45%;
+     }
 `
 
 
@@ -366,6 +374,11 @@ export const FormRecuperarContainer  = styled.div`
          button{
             padding: 10px 50px;
          }
+      }
+
+
+      @media(min-width:1300px){
+          width:45%;
       }
 ` 
 

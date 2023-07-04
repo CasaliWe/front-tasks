@@ -1,14 +1,3 @@
 * Trocar a url no controller para url final;
 * Trocar a baseUrl para url final, arquivo axios;
-* Terminar FORMCRIAR;
-* Fazer lógica backend para mandar as 2 datas prontas na ordem certa;
-* Mostrar as datas já cadastradas;
-* Após verificar datas, criar semana;
-* Fazer navegação para página dias SEMANAUNICA;
 * Trocar nome domínio firebase;
-* Arruma turno dia;
-* Arrumar foto;
-* Arrumar btn para voltar quando mostra datas ja existentes;
-* Arrumar footer home em diante;
-* Terminar conclusão task;
-* Pesquisa;

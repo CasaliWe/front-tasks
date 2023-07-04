@@ -18,6 +18,10 @@ export const ContainerContent = styled.main`
       background-color: black;
       display: flex;
       justify-content: center;
+
+      @media(min-width:1500px){
+           padding-top: 40px;
+      }
 `
 
 export const MainContent = styled.div`
@@ -26,6 +30,12 @@ export const MainContent = styled.div`
       height:100%;
       padding: 35px 25px;
       overflow-y: hidden;
+      position: relative;
+
+      @media(min-width:1200px){
+        width:60%;
+        padding: 25px 15px;
+      }
 
       @media(max-width:992px){
         width:100%;
@@ -33,6 +43,28 @@ export const MainContent = styled.div`
       }
 `
 //------------------CONTAINER-----------------
+
+
+
+//--------------------FOOTER----------------
+export const FooterApp = styled.footer`
+    background-color: white;
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    bottom: 0px;
+    width: 100%;
+    font-size: 12px;
+
+    a{
+        color: orange;
+    }
+
+    @media(min-width: 1300px){
+        font-size: 18px;
+        padding: 20px;
+    }
+`
 
 
 

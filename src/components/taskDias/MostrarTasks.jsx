@@ -32,8 +32,6 @@ export const MostrarTasks = ({diasSemanaAll}) => {
 
    }, [diasSemanaAll])
 
-  
-   console.log(tasks)
 
   return (
     <ContainerMostarTasks>

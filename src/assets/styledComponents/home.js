@@ -36,15 +36,26 @@ export const HeaderStyled = styled.div`
          flex-direction: column;
          align-items: end;
 
-         img{
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            margin-bottom: 12px;
+         span{
+             display: block;
+             width: 65px;
+             height: 65px;
+             border-radius: 50%;
+             margin-bottom: 12px;
+             overflow: hidden;
+
+             img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center center;
+             }
          }
 
-         span{
-              font-size: 16px;
+
+         h6{
+              font-size: 15px;
+              font-weight: 500;
          }
       }
 `
@@ -139,7 +150,7 @@ export const ContainerModal = styled.div`
          left: 0;
          right: 0;
          width: 100%;
-         height: 120vh;
+         height: 190vh;
          display: flex;
          justify-content: center;
          flex-direction: column;
@@ -150,6 +161,14 @@ export const ContainerModal = styled.div`
 
          @media(min-width:1800px){
             padding-top: 280px;
+         }
+
+         @media(min-width:1300px){
+            height: 100vh;
+         }
+
+         @media(max-width:992px){
+            height: 110vh;
          }
 `
 
@@ -181,6 +200,10 @@ export const ContainerFormModal = styled.div`
         justify-content: center;
         align-items: center;
         width: 100%;
+
+        @media(min-width:1300px){
+              width: 60%;
+        }
 `
 
 
