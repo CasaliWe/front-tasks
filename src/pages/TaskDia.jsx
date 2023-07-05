@@ -97,7 +97,10 @@ const TaskDia = () => {
                     setDiasSemanaAll(res)
                 })
                 .catch((err)=>{
-                    if(err){navigate('/')}
+                    if(err){
+                        navigate('/')
+                        return
+                    }
                 })
 
             }else{

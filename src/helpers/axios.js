@@ -9,7 +9,7 @@ export const pegarDados = async (rota) => {
         const response = await axios.get(`${baseUrl}${rota}`);
         return response.data;
     } catch (error) {
-        return error
+        throw error;
     }
 };
 
@@ -25,7 +25,7 @@ export const enviarDadosArquivo = async (rota, dados) => {
         });
         return response.data;
     } catch (error) {
-      return error;
+        throw error;
     }
 };
 
@@ -41,7 +41,7 @@ export const enviarDados = async (rota, dados) => {
         });
         return response.data;
     } catch (error) {
-      return error;
+        throw error;
     }
 };
 

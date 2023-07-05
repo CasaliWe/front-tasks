@@ -34,7 +34,10 @@ export const TaskPesquisaUnica = ({task, search}) => {
             navigate(`/pesquisa/${search}`)
         })
         .catch((err)=>{
-            if(err){navigate('/')}
+            if(err){
+                navigate('/')
+                return
+            }
         })
     }
 

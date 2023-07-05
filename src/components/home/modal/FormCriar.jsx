@@ -88,7 +88,10 @@ export const FormCriar = () => {
             navigate(`/`)
         })
         .catch((err)=>{
-            if(err){navigate('/')}
+            if(err){
+                navigate('/')
+                return
+            }
         })
         
     }
@@ -122,7 +125,7 @@ export const FormCriar = () => {
            <ResFormModal2>
                 <p>Já existe uma semana criada com as datas:</p>
                 {jaExiste.map((data, i)=>(
-                    <h6 key={i}>{data}</h6>
+                    <h6 key={i}>* {data}</h6>
                 ))}
            </ResFormModal2>
       ) : ''}

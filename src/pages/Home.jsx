@@ -82,7 +82,10 @@ const Home = () => {
                     setSemanasDiasAll(res)
                 })
                 .catch((err)=>{
-                    if(err){navigate('/')}
+                    if(err){
+                       navigate('/')
+                       return
+                    }
                 })
 
               }else{

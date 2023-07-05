@@ -285,7 +285,7 @@ export const ResFormModal2 = styled.div`
          margin-bottom: 5px;
          color: #DFBD43;
          text-align: center;
-         font-size: 16px;
+         font-size: 14px;
       }
 `
 

@@ -48,7 +48,10 @@ export const FormAddTask = ({setModal}) => {
           navigate(`/dias/task/${idSemana}/${idDia}`)
       })
       .catch((err)=>{
-          if(err){navigate('/')}
+            if(err){
+                navigate('/')
+                return
+            }
       })
 
   }

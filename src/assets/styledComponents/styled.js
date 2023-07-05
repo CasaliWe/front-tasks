@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
        margin: 0;
        padding: 0;
        box-sizing: border-box;
+       font-family: 'Courier New', Courier, monospace;
   }
 `
 
@@ -44,35 +45,6 @@ export const MainContent = styled.div`
 `
 //------------------CONTAINER-----------------
 
-
-
-//--------------------FOOTER----------------
-export const FooterApp = styled.footer`
-    background-color: white;
-    position: absolute;
-    text-align: center;
-    padding: 10px;
-    bottom: 0px;
-    width: 100%;
-    font-size: 12px;
-
-    a{
-        color: orange;
-    }
-
-
-
-    @media(min-width: 1800px){
-        font-size: 18px;
-        padding: 22px;
-    }
-
-
-    @media(min-width: 1300px){
-        font-size: 13px;
-        padding: 12px;
-    }
-`
 
 
 

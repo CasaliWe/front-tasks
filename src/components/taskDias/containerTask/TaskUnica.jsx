@@ -31,7 +31,10 @@ export const TaskUnica = ({task}) => {
           navigate(`/dias/task/${task.SemanaId}/${task.DiaId}`)
       })
       .catch((err)=>{
-          if(err){navigate('/')}
+          if(err){
+             navigate('/')
+             return
+          }
       })
 
   }
