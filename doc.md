@@ -1,1 +1,0 @@
-* Trocar a baseUrl para url final, arquivo axios = https://anotacoes.fun;
