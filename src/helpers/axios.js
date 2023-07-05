@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = 'https://anotacoes.fun'
+const baseUrl = 'https://wcprojeto.shop'
 
 
 //PEGAR DADOS
